@@ -14,6 +14,9 @@ export const Avatar = ({imgUrl, newPerson}) => {
                 className="photo"
                 src={imgUrl} alt="" 
             />
+            <div>
+                hello
+            </div>
         </div>
     );
 };
