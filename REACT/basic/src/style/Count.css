@@ -1,0 +1,42 @@
+.counterContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	margin-bottom: 50px;
+}
+
+.counter {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	width: 350px;
+	height: 250px;
+	border: 1px solid blueviolet;
+	border-radius: 30px;
+}
+
+.totalCount {
+	margin-bottom: 8px;
+	font-weight: bold;
+	font-size: 40px;
+}
+
+.number {
+	font-size: 7rem;
+}
+
+.addBtn {
+	font-size: 20px;
+	cursor: pointer;
+	padding: 0.2rem 1rem;
+	background-color: chocolate;
+	background: linear-gradient(
+		90deg,
+		rgba(215, 127, 12, 1) 0%,
+		rgba(253, 220, 29, 1) 100%
+	)
+}
