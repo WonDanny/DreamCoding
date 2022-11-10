@@ -1,0 +1,10 @@
+.friendsList {
+    list-style: none;
+}
+
+.li {
+
+    border-bottom: 1px solid red;
+    padding: 2rem;
+}
+
