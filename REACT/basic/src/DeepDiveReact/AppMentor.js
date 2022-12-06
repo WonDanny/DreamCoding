@@ -1,7 +1,5 @@
 import './style/AppMentor.css'
-import { useReducer } from 'react';
-import { personReducer } from '../reducer/person-reducer';
-
+import { useState } from 'react';
 
 export const AppMentor = () => {
     // const [person, setPerson] = useState(initialPerson);
@@ -28,14 +26,19 @@ export const AppMentor = () => {
     }
 
     return (
-        <div className='container'>
+        <div 
+            className='container' 
+            style={{
+                width: '1200px', display: 'flex', justifyContent: 'center', margin: 'auto',
+                alignItems: 'center', flexDirection: 'column', 
+        }}>
             <div className="person">
                 <h1>{person.name}는 {person.job}</h1>
                 <p>{person.name} 의 멘토는</p>
                 <ul>
                     {person && person.mentors.map((mentor, index) => {
                         return (
-                            <li key={index}>
+                            <li key={index} style={{fontSize: '20px', marginBottom: '10px'}}>
                                 {`${mentor.name} (${mentor.job})`}
                             </li>
                         );
@@ -50,18 +53,3 @@ export const AppMentor = () => {
         </div>
     );
 };
-
-const initialPerson = {
-    name: 'danny',
-    job: '개발자',
-    mentors: [
-        {
-            name: 'hiz',
-            job: '20년차 개발자'
-        },
-        {
-            name: 'jude',
-            job: '10년차 개발자'
-        }
-    ]
-}
