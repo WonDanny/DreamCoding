@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
 import './index.css';
-import { AppMentor } from './DeepDiveReact/AppMentor';
+import { AppTheme } from './DeepDiveReact/AppTheme';
+
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AppMentor />
+    <AppTheme />
   </React.StrictMode>
 );
 
