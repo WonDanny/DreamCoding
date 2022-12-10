@@ -2,7 +2,7 @@ import './style/AppMentor.css'
 import { useReducer } from 'react';
 import { personReducer } from '../reducer/person-reducer';
 
-export const AppMentor = () => {
+export const AppMentorReducer = () => {
     // const [person, setPerson] = useState(initialPerson);
     const [person, dispatch] = useReducer(personReducer, initialPerson);
     
