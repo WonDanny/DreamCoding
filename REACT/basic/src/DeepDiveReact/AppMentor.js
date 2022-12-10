@@ -1,63 +1,29 @@
 import './style/AppMentor.css'
-import { useReducer, useState } from 'react';
-import personReducer from '../reducer/person-reducer';
-
-const initialPerson = {
-    name: 'danny',
-    job: '개발자',
-    mentors: [
-        {
-            name: 'hiz',
-            job: '20년차 개발자'
-        },
-        {
-            name: 'jude',
-            job: '10년차 개발자'
-        }
-    ]
-};
+import { useState } from 'react';
 
 export const AppMentor = () => {
+    // const [person, setPerson] = useState(initialPerson);
+    const [person, dispatch] = useReducer(personReducer, initialPerson);
     
-    const [person, setPerson] = useState(initialPerson);
-    // const [person, dispatch] = useReducer(personReducer, initialPerson);
+    const handleNameChange = () => {
+        const selectedName = prompt(`누구의 이름을 바꾸시겠습니까?`);
+        const changedName = prompt(`이름을 무엇으로 바꾸시겠습니까?`);
 
-    const handleUpdate = (selectedName, changedName, changedJob) => {
-        console.log('selectedName', selectedName);
-        console.log('changedJob', changedJob);
-
-        setPerson((person) => ({
-            ...person,
-            mentors: person.mentors.map((mentor) => {
-                if(mentor.name === selectedName) {
-                    if(changedName) {
-                        return {
-                            ...mentor,
-                            name: changedName
-                        }
-                    } else if(changedJob) {
-                        return {
-                            ...mentor,
-                            job: changedJob
-                        }
-                    }
-                }
-                return mentor;
-            })
-        }));
-    };
-
-    const handleAdd = (addMentorName, addMentorJob) => {
-        setPerson((person) => ({
-            ...person,
-            mentors: [...person.mentors, {name: addMentorName, job: addMentorJob}]
-        }))
+        dispatch({type: 'update', selectedName, changedName});
     }
 
-    const handleDelete = () => {
+    const handleAddMentor = () => {
+        const newMentorName = prompt(`추가할 멘토의 이름을 입력하세요.`);
+        const newMentorJob = prompt(`추가할 멘토의 직업을 입력하세요.`);
 
+        dispatch({type: 'add', newMentorName, newMentorJob});
     }
 
+    const handleDeleteMentor = () => {
+        const deleteMentorName = prompt(`누구삭제?`);
+        
+        dispatch({type: 'delete', deleteMentorName})
+    }
 
     return (
         <div 
@@ -79,45 +45,10 @@ export const AppMentor = () => {
                     })}
                 </ul>
             </div>
-            <div className='btnGroup' style={{ width: '300px', display: 'flex', justifyContent: 'space-around'}}>
-                <button 
-                    className="nameChange"
-                    type='button'
-                    onClick={() => {
-                        const selectedName = prompt(`멘토 누구 이름 변경?`);
-                        const changedName = prompt(`뭘로 변경?`);
-
-                        handleUpdate(selectedName, changedName);
-                }}>
-                    멘토이름 변경
-                </button>
-                <button 
-                    className="jobChange"
-                    type='button'
-                    onClick={() => {
-                        const selectedName = prompt(`누구의 Job을 바꿈?`);
-                        const changedJob = prompt(`직업을 뭘로 바꿈?`);
-
-                        console.log('selectedName', selectedName);
-                        console.log('changedJob', changedJob);
-
-                        handleUpdate( selectedName, '', changedJob); 
-                    }}
-                >
-                    멘토직업 변경
-                </button>
-                <button
-                    className='addMentor'
-                    type='button'
-                    onClick={() => {
-                        const addMentorName = prompt(`추가할 멘토 이름`);
-                        const addMentorJob = prompt(`추가할 멘토 직업`);
-
-                        handleAdd(addMentorName, addMentorJob);
-                    }}
-                >
-                멘토 추가
-                </button>
+            <div className='btnGroup'>
+                <button className="nameChange" type='button' onClick={handleNameChange}>멘토이름 변경</button>
+                <button className='addMentor' type='button'onClick={handleAddMentor}>멘토 추가</button>
+                <button className="deleteMentor" type='button' onClick={handleDeleteMentor}>멘토 삭제</button>
             </div>
         </div>
     );
