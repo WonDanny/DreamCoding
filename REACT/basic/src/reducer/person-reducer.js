@@ -1,42 +1,40 @@
 
 
 export const personReducer = (person, action) => {
-    console.log('person', person);
-    console.log('action', action);
-    console.log('action.type', action.type);
+    // console.log('person', person); 
+    // console.log('action', action);
 
-    switch (action.type) {
-        case 'update': {
-            const { selectedName, changedName } = action;
-
+    switch(action.type) {
+        case 'update' : {
+            const {selectedName, changedName} = action;
             return {
                 ...person,
                 mentors: person.mentors.map((mentor) => {
                     if(mentor.name === selectedName) {
-                        return {...mentor, name: changedName};
+                        return { ...mentor, name: changedName};
                     }
                     return mentor;
-                })
+                }),
             };
         }
-        case 'add': {
-            const { newMentorName, newMentorJob } = action;
-            
+        case 'added': {
+            const {newMentorName, newMentorJob} = action;
             return {
                 ...person,
-                mentors: [...person.mentors, {name: newMentorName, job: newMentorJob}]
+                mentors: [...person.mentors, {name: newMentorName, job: newMentorJob}],
             };
         }
         case 'delete': {
-            const { deleteMentorName } = action;
-
+            const {deleteMentorName} = action;
             return {
                 ...person,
-                mentors: person.mentors.filter((mentor) => deleteMentorName !== mentor.name)
-            };
+                mentors: person.mentors.filter((mentor) => {
+                    return mentor.name !== deleteMentorName
+                })
+            }
         }
-        default: {
-            throw Error(`알수없는 액션 타입${action.type}`);
+        default : {
+            throw Error(`type: ${action.type} 은(는) 알수없는 action 타입입니다.`)
         }
     }
-};
+}
