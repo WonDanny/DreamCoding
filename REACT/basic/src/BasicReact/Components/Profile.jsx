@@ -8,7 +8,6 @@ export const Profile = ({name, job, imgUrl, newPerson}) => {
             <Avatar imgUrl={imgUrl} newPerson={newPerson} />
             <h1>{name}</h1>
             <p>{job}</p>
-            asd
         </div>
     );
 };

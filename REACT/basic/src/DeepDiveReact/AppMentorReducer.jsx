@@ -1,7 +1,8 @@
 import './style/AppMentor.css'
-import { useState } from 'react';
+import { useReducer } from 'react';
+import { personReducer } from '../reducer/person-reducer';
 
-export const AppMentor = () => {
+export const AppMentorReducer = () => {
     // const [person, setPerson] = useState(initialPerson);
     const [person, dispatch] = useReducer(personReducer, initialPerson);
     
@@ -16,7 +17,7 @@ export const AppMentor = () => {
         const newMentorName = prompt(`추가할 멘토의 이름을 입력하세요.`);
         const newMentorJob = prompt(`추가할 멘토의 직업을 입력하세요.`);
 
-        dispatch({type: 'add', newMentorName, newMentorJob});
+        dispatch({type: 'added', newMentorName, newMentorJob});
     }
 
     const handleDeleteMentor = () => {
@@ -53,3 +54,12 @@ export const AppMentor = () => {
         </div>
     );
 };
+
+const initialPerson = {
+    name: 'danny',
+    job: '개발자',
+    mentors: [
+        {name: 'hiz', job: '20년차 개발자'},
+        {name: 'jude', job: '10년차 개발자'},
+    ]
+}

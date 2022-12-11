@@ -1,0 +1,7 @@
+.AppFormContainer {
+    display: flex;
+    justify-content: center;
+
+    margin: auto;
+    width: 1200px;
+}   
