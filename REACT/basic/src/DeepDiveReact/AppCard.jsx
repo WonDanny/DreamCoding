@@ -1,35 +1,53 @@
 import React from "react";
 
-export const AppCard = () => {
+export const AppCard = ({darkMode}) => {
     
     return (
         <>
-            <Card>
+            <Card darkMode={darkMode}>
                 <p>Card 1</p>
             </Card>
-            <Card>
+            <Card darkMode={darkMode}>
                 <p>Card 2</p>
             </Card>
         </>
     )
 }
 
-function Card({children}) {
+function Card({children, darkMode}) {
     return(
-        <div
-            style={{
-                backgroundColor: 'black',
-                borderRadius: '20px',
-                color: 'white',
-                minHeight: '200px',
-                minWidth: '200px',
-                margin: '1rem',
-                padding: '1rem',
-                textAlign: 'center'
-            }}
-        >
-            {children}
-        </div>
+        <>
+            {darkMode ? (
+                <div
+                    style={{
+                        backgroundColor: 'black',
+                        borderRadius: '20px',
+                        color: 'white',
+                        minHeight: '200px',
+                        minWidth: '200px',
+                        margin: '1rem',
+                        padding: '1rem',
+                        textAlign: 'center'
+                    }}
+                >
+                    {children}
+                </div>
+            ) : (
+                <div
+                    style={{
+                        backgroundColor: 'white',
+                        borderRadius: '20px',
+                        color: 'black',
+                        minHeight: '200px',
+                        minWidth: '200px',
+                        margin: '1rem',
+                        padding: '1rem',
+                        textAlign: 'center'
+                    }}
+                >
+                    {children}
+                </div>
+            )}
+        </>
     )
-    
 }
