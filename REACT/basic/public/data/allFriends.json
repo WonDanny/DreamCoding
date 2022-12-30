@@ -28,5 +28,17 @@
         "name": "JYP",
         "age": 31,
         "gender": "male"
+    },
+    {
+        "id": 6,
+        "name": "Green",
+        "age": 33,
+        "gender": "female"
+    },
+    {
+        "id": 7,
+        "name": "Julia",
+        "age": 30,
+        "gender": "female"
     }
 ]
