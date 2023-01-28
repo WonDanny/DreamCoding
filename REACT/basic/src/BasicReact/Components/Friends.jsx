@@ -10,7 +10,7 @@ export const Friends = () => {
 
     if(loading) return <p>loading....</p>
     if(error) return <p>{error}</p>
-    // asd
+    
     return(
         <div className="friends">
             <div className="checkBoxForGirlfriend">
